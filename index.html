@@ -16,7 +16,7 @@
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+					<a href="#" class="image avatar"><img src="images/thumbs/Avatar1.png" alt="" /></a>
 					<h1><strong>Hi, my name is Tevin</strong>, a Web Developer<br />
 					looking to make UI/UX fun<br />
 				</div>
@@ -42,23 +42,47 @@
 						<h2>Recent Work</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/thumbs/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>API based Weather App</h3>
-								<p>Weather app that uses API call to fetch real time data and render it on the UI</p>
-								<a href="https://weather.tevbar.org" target="_blank" class="button small">View Project</a>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/thumbs/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Task Manager</h3>
-								<p>Task Manager that makes writing things down and executing fun</p>
-								<a href="https://tasks.tevbar.org" target="_blank" class="button small">View Project</a>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/thumbs/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Netflix Clone</h3>
-								<p>Netflix clone to reimagine how I would formulate the app. Still being worked on, but has enough implementations to navigate.</p>
-								<a href="https://netflix.tevbar.org" target="_blank" class="button small">View Project</a>
-							</article>
+						<div class="carousel">
+							<div class="carousel-track">
+								<a href="images/thumbs/Weather.png" class="image fit thumb"><img src="images/thumbs/Weather.png" alt="" /></a>
+								<a href="images/thumbs/Weather1.png" class="image fit thumb"><img src="images/thumbs/Weather1.png" alt="" /></a>
+								<a href="images/thumbs/Weather2.png" class="image fit thumb"><img src="images/thumbs/Weather2.png" alt="" /></a>
+							</div>
+							<button class="carousel-btn prev" onclick="moveCarousel(this, -1)">&#8249;</button>
+							<button class="carousel-btn next" onclick="moveCarousel(this, 1)">&#8250;</button>
+						</div>
+						<h3>API based Weather App</h3>
+						<p>Weather app that uses API call to fetch real time data and render it on the UI</p>
+						<a href="https://weather.tevbar.org" target="_blank" class="button small">View Project</a>
+					</article>
+					<article class="col-6 col-12-xsmall work-item">
+						<div class="carousel">
+							<div class="carousel-track">
+								<a href="images/thumbs/Task.png" class="image fit thumb"><img src="images/thumbs/Task.png" alt="" /></a>
+								<a href="images/thumbs/Task1.png" class="image fit thumb"><img src="images/thumbs/Task1.png" alt="" /></a>
+								<a href="images/thumbs/Task2.png" class="image fit thumb"><img src="images/thumbs/Task2.png" alt="" /></a>
+							</div>
+							<button class="carousel-btn prev" onclick="moveCarousel(this, -1)">&#8249;</button>
+							<button class="carousel-btn next" onclick="moveCarousel(this, 1)">&#8250;</button>
+						</div>
+						<h3>Task Manager</h3>
+						<p>Task Manager that makes writing things down and executing fun</p>
+						<a href="https://tasks.tevbar.org" target="_blank" class="button small">View Project</a>
+					</article>
+					<article class="col-6 col-12-xsmall work-item">
+						<div class="carousel">
+							<div class="carousel-track">
+								<a href="images/thumbs/netflix-clone.png" class="image fit thumb"><img src="images/thumbs/netflix-clone.png" alt="" /></a>
+								<a href="images/thumbs/netflix-clone1.png" class="image fit thumb"><img src="images/thumbs/netflix-clone1.png" alt="" /></a>
+								<a href="images/thumbs/netflix-clone2.png" class="image fit thumb"><img src="images/thumbs/netflix-clone2.png" alt="" /></a>
+							</div>
+							<button class="carousel-btn prev" onclick="moveCarousel(this, -1)">&#8249;</button>
+							<button class="carousel-btn next" onclick="moveCarousel(this, 1)">&#8250;</button>
+						</div>
+						<h3>Netflix Clone</h3>
+						<p>Netflix clone to reimagine how I would formulate the app. Still being worked on, but has enough implementations to navigate.</p>
+						<a href="https://netflix.tevbar.org" target="_blank" class="button small">View Project</a>
+					</article>
 						</div>
 						<ul class="actions">
 							<li><a href="#" class="button">Full Portfolio</a></li>
@@ -68,7 +92,7 @@
 				<!-- Three -->
 					<section id="three">
 						<h2>Get In Touch</h2>
-						<p>Thank you for taking the time to check out what I can offer, I am still learning every single day and I live to act as a sponge to take in any kind of valuable info! any more questions, collaborate on a project or want to speak with me in an interview setting feel free to give me a shout!</p>
+						<p>Thank you for taking the time to check out what I can offer, I am still learning every single day and I live to act as a sponge to take in any kind of valuable info! any more questions, collaborate on a project. Please feel free to reach out!</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
 								<form method="post" action="#">
@@ -87,7 +111,7 @@
 									<li>
 										<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
 										<br />
-										Chula Vista, CA<br />
+										Spring Valley, CA<br />
 										United States
 									</li>
 									<li>
@@ -444,6 +468,18 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+
+<script>
+	function moveCarousel(btn, direction) {
+		const track = btn.parentElement.querySelector('.carousel-track');
+		const items = track.querySelectorAll('a');
+		let current = parseInt(track.dataset.current || 0);
+		current = (current + direction + items.length) % items.length;
+		track.dataset.current = current;
+		track.style.transform = `translateX(-${current * 100}%)`;
+	}
+</script>
 
 	</body>
 </html>
